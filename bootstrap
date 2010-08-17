@@ -1,0 +1,9 @@
+#!/bin/sh
+if [ ! -d config ] ; then
+  mkdir config
+fi
+libtoolize --force
+aclocal
+autoheader
+autoconf
+automake --foreign --add-missing --copy

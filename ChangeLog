@@ -1,0 +1,282 @@
+2009-01-22  Satoshi Konno <skonno@cybergarage.org>
+
+	* Fixed the project file for Visual Studio 2005 to compile normally.
+	* Fixed a memory leak of Node::setName().
+	* Changed getValue() of SFDouble, SFBool, SFFloat and SFChar to use snprintf instead of _snprintf.
+	
+2008-08-16  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/VRML97.l, src/cybergarage/x3d/VRML97.yy.cpp: Fix 
+	  bug in DEF processing where missing whitespace between nodeName and
+	  '{' caused a syntax error. Also fixed sscanf call to avoid buffer
+	  overflows.
+
+2008-06-25  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/StringUtil.cpp: Add cstring include for Gcc 4.3
+
+2008-01-30  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/PROTO.cpp: Used cached string length, rather
+	  than recalculate it for each token.
+
+2007-12-19  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/SF*.cpp, src/cybergarage/x3d/Field.cpp,
+	  src/cybergarage/XMLElement.cpp, src/cybergarage/StringUtil.cpp,
+	  include/cybergarage/x3d/SF*.h, include/cybergarage/x3d/Field.h,
+	  include/cybergarage/XMLElement.h, include/cybergarage/StringUtil.h:
+	  Make all operator<< functions take const object arguments.
+
+2007-12-14  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/InlineNode.cpp: Get the base path from the
+	  SceneGraph and use it when attempting to load new files.
+
+2007-12-14  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/PROTO.cpp: Modify tokeniser so that it can
+	  treat { ... } as a single token so speed up the field processing.
+
+2007-12-13  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/PROTO.cpp: Stop an assert from happening.
+
+2007-12-13  Simon Goodall <sgoodall@sourceforge.net>
+
+	* include/cybergarage/x3d/VRML97.tab.h, src/cybergarage/x3d/VRML97.l,
+	  src/cybergarage/x3d/VRML97.tab.cpp, src/cybergarage/x3d/VRML97.y,
+	  src/cybergarage/x3d/VRML97.yy.cpp: Re-generate with new flex/bison
+	  programs.
+
+2007-12-13  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/build: Update script to generate correct
+	  filenames so debug information is correct.
+
+2007-12-13  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/PROTO.cpp: Use new tokeniser in getString
+	  method.
+
+2007-12-13  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/VRML.yy.cpp, src/cybergarage/x3d/VRML.l: Fix
+	  PROTO parser to handle empty body declarations.
+
+2007-12-13  Simon Goodall <sgoodall@sourceforge.net>
+
+	* include/cybergarage/x3d/SceneGraph.h: Add a member variable and
+	  accessors to allow the URL base base to be stored. This can be used
+	  to obtain the full URLs for InlineNode, images etc.
+
+2007-12-12  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/PROTO.cpp: Fix problem when substituting PROTO
+	  strings with multiple fields.
+
+2007-12-10  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/PROTO.cpp: Add '\r' as a whitespace character.
+
+2007-08-28  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/*, include/*: Mega change to make many member functions const,
+	  use const char * rather than just char * and make some use of
+	  sprintf and sscanf safer.
+
+2007-08-23  Simon Goodall <sgoodall@sourceforge.net>
+
+	* include/cybergarage/x3d/VRML97ParserFunc.h,
+	  src/cybergarage/x3d/VRML97.l, src/cybergarage/x3d/VRML97.yy.cpp: Made
+	  UnputString and GetErrorLineString use const char * strings. Put in a
+	  string width check in a sscanf statement.
+
+2007-08-23  Simon Goodall <sgoodall@sourceforge.net>
+
+	* include/cybergarage/ParserResult.h,
+	  include/cybergarage/SceneGraph.h: Use const char * instead of char *
+	  as we don't modify the strings.
+
+2007-08-23  Simon Goodall <sgoodall@sourceforge.net>
+
+	* sample/X3DBrowser/glut/X3DBrowserGLUT.cpp: Print parser errors to
+	  stdout.
+
+2007-08-23  Simon Goodall <sgoodall@sourceforge.net>
+
+	* configure.in: Added a --enable-debug option to control how -O, -g
+	  and -DDEBUG/-DNDEBUG flags are added to the build.
+
+2007-08-23  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/PROTO.cpp: Make a new tokeniser for
+	  addFieldValues that knows who to handle quotes and []{} characters.
+	  Store the string for all node types as the main parser is much better
+	  than a custom one here. Add some string widths to the sscanf
+	  statements in case of buffer overflows. Add a fix for an infinite
+	  loop caused by the first token not being a FieldAccessTypeString,
+	  currently silently ignores the problem.
+
+2007-07-25  Simon Goodall <sgoodall@sourceforge.net>
+
+	* src/cybergarage/x3d/PROTO.cpp: Fix addFieldValues function when
+	  parsing SFNodes. A SFNode can contain other node declarations, so we
+	  need to store the definition text for later parsing.
+
+2007-03-29  Satoshi Konno <skonno@cybergarage.org>
+	* Fixed the project file for Visual Studio 2005 to compile normally.
+	* Changed SUPPORT_URL into CX3D_SUPPORT_URL.
+	* Changed SUPPORT_JSAI into CX3D_SUPPORT_JSAI.
+	* Changed SUPPORT_JPEG into CX3D_SUPPORT_JPEG.
+	* Changed SUPPORT_PNG into CX3D_SUPPORT_PNG.
+	* Changed SUPPORT_X3D into CX3D_SUPPORT_X3D.
+	* Changed SUPPORT_OPENGL into CX3D_SUPPORT_OPENGL.
+	* Changed SUPPORT_GLUT into CX3D_SUPPORT_GLUT.
+	* Changed SUPPORT_SOUND into CX3D_SUPPORT_SOUND.
+	* Changed SUPPORT_OLDCPP into CX3D_SUPPORT_OLDCPP.
+	* Changed some headers in all source files such as the copyright.
+	* Added CX3D_SUPPORT_GZIP into FileUtil.cpp and VRML97Parser.c to ignore zlib functions on Windows Platform as default.
+	* Added --enable-gzip into the configure.in. The comiple option is enabled on Unix platform as default.
+	* Confirmed to compile normally using GCC v3.4.5.
+
+2006-12-21  Simon Goodall  <sgoodall@sourceforge.net>
+	* include/cybergarage/x3d/*.h: Make destructors explicitly virtual to
+	  ensure they will be called from a sub-class.
+	* include/cybergarage/x3d/LinkedList.h: Fix memleak on setRootNode.
+	* src/cybergarage/x3d/FileJPEG.cpp: Fix memory leak.
+	* src/cybergarage/x3d/SceneGraph.cpp: Fix memory leak.
+	* configure.in, include/cybergarage/x3d/VRML97ParserFunc.h,
+	  src/cybergarage/x3d/FileUtil.cpp, src/cybergarage/x3d/VRML97.l,
+	  src/cybergarage/x3d/VRML97.y, src/cybergarage/x3d/VRML97.tab.cpp,
+	  src/cybergarage/x3d/VRML97.yy.cpp,
+	  src/cybergarage/x3d/VRML97Parser.cpp: Added functionality to read gzip
+	  compressed VRML. Make comma and carriage return characters white space
+	  as per vrml97 spec. This also makes the grammer file simpler as we no
+	  longer need to handle all possible combinations of comma usage.
+
+2006-12-21  Simon Goodall  <sgoodall@sourceforge.net>
+	* configure, config.h, config.h.in, config.log, config.status,
+	  aclocal.m4, stamp-h1, */Makefile, */Makefile.in: Remove auto-generated
+	  files from svn. Running ./bootstrap then ./configure will regenerate
+	  them.
+	* bootstrap.sh: Make config dir if it does not exist.
+	* cx3d-1.0.pc.in: Added pkg-config file.
+	* Makefile.am, src/Makefile.am, src/cybergarage/Makefile.am,
+	  src/cybergarage/x3d/makefile.am, include/Makefile.am,
+	  include/cybergarage/Makefile.am, include/cybergarage/x3d/Makefile.am:
+	  Added Makefile.am in source dirs to fix building and to fix
+	  make install/dist. Make the generated lib be libcx3d-1.0.la.
+	* configure.in: Re-order calls to work with more modern autoconf 
+	  generation. Added entries for new Makefile.am files. Generate
+	  pkgconfig file. Define the library version number.
+	* src/cybergarage/x3d/Vector.h: Update template use for more modern gcc
+	  compilers.
+	* sample/vrml2x3d/unix/Makefile.am, sample/x3d2vrml/unix/Makefile.am,
+	  sample/X3DBrowser/glut/unix/Makefile.am: Update .la path
+
+2004-03-17  Satoshi Konno <skonno@cybergarage.org>
+	* Release v1.0.1
+	* Fixed a VRML output bugs using getType() instead of getTypeName().
+	* Changed the VRML parser to run under more minimum memory.
+	* Fixed a memory leak in Node::outputContext().
+	* Fixed SFBool::setValue() to set the value using lower strings, "true" and "false".
+	* Changed Node::getChildNodeByType() to check the reference node type if the child node is the instance node.
+	* Fixed a memory leak in ~Vector() using STL.
+
+2003-10-15  Satoshi Konno <skonno@cybergarage.org>
+	* Released as v1.0 based on CyberVRML97 release 1.1.
+	* Added support for X3D to input and output. 
+	* Supported the name space, CyberX3D.
+	* Added the project files for Windows and Unix platforms. 
+	* Fixed some bugs 
+
+2002-03-26  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1.1
+	* Changed some basic data structures to get more performance using STL etc. 
+	* Changed the field access methods to get more performance. 
+	* Changed some class hierary hierarchy. 
+	* Fixed some minor bugs. 
+
+2000-03-05  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1.06
+	* Updated WIN32 and GLUT samples. 
+	* Supported Macintosh to compile with no change. 
+	* Fixed some minor bugs. 
+
+1999-07-10  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1.05 
+	* Moved most codes into the source (*.cpp) files instead of the header files.  
+	* Fixed some PROTO bugs. 
+
+1999-03-14  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1.04 
+	* Added BeOS and Cygwin support for TimeSensor node. 
+	* Updated a vrml-java package for behaviors in Script node. 
+	* Fixed a bug of Extrusion node. 
+
+1998-10-16  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1.03a 
+	* Fixed a bug when Script nodes call shutdown(). 
+	* Change include files in vrml.l and vrml.y. 
+
+1998-09-19  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1.03
+	* Added some compiler flags. 
+	* Supported PNG file format in ImageTextureNode. 
+	* Changed class name of node classes; ex, Appearance -> AppearanceNode. 
+	* Fixed some minor bugs. 
+
+1998-03-31  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1.02c
+	* Fixed  parser syntax to read null MField objects normally (ex. Coordinate { point [] } ). 
+	* Fixed a bug of CylinderSensor which can not access the 'isActive' field normally. 
+	* Changed a assertion of JNode class. 
+
+1998-03-15  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1.02b
+	* Fixed a parser algorithm to load PROTOs normally. 
+	* Fixed a bug in destructor of Node class so that it can delete the instance nodes normally. 
+	* Changed assertions of JNode class. 
+
+1998-02-26  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1.02a
+	* Supported automatic loading files of Inline. 
+	* Supported loading a file of the URN style for ImageTexture, Inline Script, and Scenegraph class . 
+	* Supported creating a  instance node by USE keyword. 
+	* Supported automatic switching of children nodes for LOD and Switch node. 
+
+1997-10-15  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1.02 
+	* Fixed an automatic normal generation bugs. 
+	* Added a support for loading GIF and JPEG files of ImageTexture node. 
+	* Added an automatic texture corrdinate generation algorithm.. 
+	* Added a support for bindable events. 
+
+1997-09-25  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1.01 
+	* Fixed the remove method of LinkedList class. If you add a node which was removed from a scene graph again, the node couldn't add normally. 
+	* Geometry nodes have a display list for OpenGL. 
+
+1997-08-17  Satoshi Konno <skonno@cybergarage.org>
+	* Release 1 
+	* Conformed to JSI specification in more detail. 
+	* Changed the event update algorithm. 
+	* Added a support for the PROTO keyword. 
+
+1997-04-19  Satoshi Konno <skonno@cybergarage.org>
+	* Release1 beta3 
+	* Fixed the getTransformMatrix method of Node class. The method returned the invalid value when Transform nodes were nested. 
+	* Changed the CString class to the JString because the class name competed with Visual C++. 
+	* Changed the CVector class to the JVector. 
+	* Fixed the load method of SceneGraph class. The method couldn't read a file again. 
+	* The USE and DEF keywords is able to be used normally. 
+
+1997-04-13  Satoshi Konno <skonno@cybergarage.org>
+	* Release1 beta2
+	* Added find* methods to SceneGraph class. 
+	* Added a nextTraversal method to node classes. 
+	* Added a getMatrix method to Viewpoint class. 
+	* Added a getTransformMatrix method to Node class. 
+	* Fixed the next method of GroupingNode class. 
+	* Fixed the internal root node has no the parent node. 

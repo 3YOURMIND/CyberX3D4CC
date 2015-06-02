@@ -33,7 +33,15 @@ ExtrusionNode::ExtrusionNode()
 	///////////////////////////
 	// Field 
 	///////////////////////////
-		
+	
+	// USE field
+	useField = new SFString();
+	addField(useFieldString, useField);
+
+	// DEF field
+	defField = new SFString();
+	addField(defFieldString, defField);
+
 	// beginCap field
 	beginCapField = new SFBool(true);
 	addField(beginCapFieldString, beginCapField);
@@ -116,6 +124,16 @@ SFBool *ExtrusionNode::getBeginCapField() const
 	if (isInstanceNode() == false)
 		return beginCapField;
 	return (SFBool *)getField(beginCapFieldString);
+}
+
+SFString *ExtrusionNode::getDEF() const
+{
+    return (SFString *)getField(defFieldString);
+}
+
+SFString *ExtrusionNode::getUSE() const
+{  
+    return (SFString *)getField(useFieldString);
 }
 	
 void ExtrusionNode::setBeginCap(bool value) 

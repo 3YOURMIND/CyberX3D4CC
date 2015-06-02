@@ -17,6 +17,8 @@ namespace CyberX3D {
 
 class ExtrusionNode : public Geometry3DNode 
 {
+    SFString *useField;
+	SFString *defField;
 	SFBool *beginCapField;
 	SFBool *endCapField;
 	SFBool *convexField;
@@ -38,6 +40,9 @@ public:
 	////////////////////////////////////////////////
 	
 	SFBool *getBeginCapField() const;
+
+    SFString *getDEF() const;
+	SFString *getUSE() const;
 
 	void setBeginCap(bool value);
 	void setBeginCap(int value);

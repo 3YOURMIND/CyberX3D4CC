@@ -47,11 +47,6 @@ typedef struct {
 	unsigned int		transparencyColorIndex;
 } GIF89aImage;
 
-#if !R && !G && !B
-#define R	0
-#define G	1
-#define B	2
-#endif
 
 #define GIF89A_LZW_TABLE_SIZE	4096
 

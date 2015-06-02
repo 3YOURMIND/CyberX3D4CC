@@ -286,7 +286,9 @@ bool SceneGraph::save(const char *filename, void (*callbackFn)(int nNode, void *
 ///////////////////////////////////////////////////////////////
 bool SceneGraph::save(const wchar_t *filename, void (*callbackFn)(int nNode, void *info), void *callbackFnInfo)
 {
-	std::ofstream outputFile(filename);
+    char nonsense[100];
+	wcstombs(nonsense, filename, 100);
+	std::ofstream outputFile(nonsense);
 
 	if (!outputFile)
 		return false;
@@ -341,7 +343,9 @@ bool SceneGraph::saveXML(const char *filename, void (*callbackFn)(int nNode, voi
 ////////////////////////////////////////////////////////////////
 bool SceneGraph::saveXML(const wchar_t *filename, void (*callbackFn)(int nNode, void *info), void *callbackFnInfo)
 {
-	std::ofstream outputFile(filename);
+    char nonsense[100];
+	wcstombs(nonsense,filename,100);
+	std::ofstream outputFile(nonsense);
 
 	if (!outputFile)
 		return false;

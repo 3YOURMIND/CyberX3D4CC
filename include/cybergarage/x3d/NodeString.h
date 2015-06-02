@@ -78,6 +78,9 @@ const char worldInfoNodeString[] = "WorldInfo";
 * Field Constants
 ******************************************************************/
 
+const char useFieldString[] = "USE";
+const char defFieldString[] = "DEF";
+
 const char ambientIntensityFieldString[] = "ambientIntensity";
 const char attenuationFieldString[] = "attenuation";
 const char autoOffsetFieldString[] = "autoOffset";

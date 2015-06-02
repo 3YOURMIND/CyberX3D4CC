@@ -21,14 +21,12 @@
 
 namespace CyberX3D {
 
-#if !R && !G && !B
-#define R	0
-#define G	1
-#define B	2
-#endif
-
 typedef unsigned char RGBColor24[3];
 typedef unsigned char RGBAColor32[4];
+
+const int R = 0;
+const int G = 1;
+const int B = 2;
 
 class FileImage {
 

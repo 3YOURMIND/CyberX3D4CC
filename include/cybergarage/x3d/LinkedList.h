@@ -117,7 +117,7 @@ public:
       }
     else
       {
-      register int n = 0;
+      int n = 0;
       for (LinkedListNode<T> *listNode = (LinkedListNode<T> *)getNodes(); listNode; listNode = (LinkedListNode<T> *)listNode->next())
         n++;
       return m_nSize = n;
@@ -232,7 +232,7 @@ public:
       }
     else
       {
-      register int n = 0;
+      int n = 0;
       for (LinkedListNode<T> *listNode = (LinkedListNode<T> *)getNodes(); listNode; listNode = (LinkedListNode<T> *)listNode->next())
         n++;
       return m_nSize = n;

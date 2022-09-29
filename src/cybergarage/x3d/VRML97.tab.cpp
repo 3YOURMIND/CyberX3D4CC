@@ -643,7 +643,7 @@ typedef short int yytype_int16;
 #  endif
 # endif
 # ifndef YY_
-#  define YY_(msgid) msgid
+#  define YY_(msgid) (char*)msgid
 # endif
 #endif
 

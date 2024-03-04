@@ -20,6 +20,8 @@ MField::~MField()
 {
 }
 
+Vector<Field> *MField::getVector() { return &mFieldVector; }
+
 int MField::getSize() const
 {
 	return mFieldVector.size();

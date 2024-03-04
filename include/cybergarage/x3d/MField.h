@@ -27,6 +27,7 @@ public:
 	MField();
 	virtual ~MField();
 
+	Vector<Field> *getVector();
 	int getSize() const;
 
 	int size() const;
